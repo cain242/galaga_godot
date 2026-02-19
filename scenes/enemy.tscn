@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://kg3dgrligiym"]
+
+[ext_resource type="Texture2D" uid="uid://tpn10j3fvf17" path="res://assets/Arcade - Galaga - Miscellaneous - General Sprites.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://dwe6hmvh63nae" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 7.0
+
+[node name="enemy" type="CharacterBody2D" unique_id=1660163022]
+scale = Vector2(2, 2)
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1894675900]
+scale = Vector2(2, 2)
+texture = ExtResource("1_7p1mj")
+region_enabled = true
+region_rect = Rect2(255, 94, 11, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1059321226]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_md0e3")

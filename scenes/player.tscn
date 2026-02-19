@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cbilnv4sfkm3c"]
+
+[ext_resource type="Texture2D" uid="uid://tpn10j3fvf17" path="res://assets/Arcade - Galaga - Miscellaneous - General Sprites.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://ba12jhows1fj2" path="res://scenes/player.gd" id="1_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 9.5
+
+[node name="player" type="CharacterBody2D" unique_id=1358414630]
+scale = Vector2(3, 3)
+script = ExtResource("1_g2els")
+speed = 400
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=146436431]
+position = Vector2(-8, 0)
+texture = ExtResource("1_3vyb7")
+centered = false
+region_enabled = true
+region_rect = Rect2(109, 1, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131107178]
+position = Vector2(-0.6666667, 9.333333)
+shape = SubResource("CircleShape2D_g2els")

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://buogev6ru3uk4"]
+
+[ext_resource type="Texture2D" uid="uid://h01p2l113otu" path="res://assets/outline-sparkle-star-pixel-art-your-needs_1032646-1705-removebg-preview-removebg-preview.png" id="1_4xfga"]
+[ext_resource type="Script" uid="uid://veltqbnmh1kc" path="res://scenes/map.gd" id="1_gldc4"]
+[ext_resource type="Texture2D" uid="uid://bae2kys70l02w" path="res://assets/bg.jpg" id="1_paxxb"]
+[ext_resource type="PackedScene" uid="uid://kg3dgrligiym" path="res://scenes/enemy.tscn" id="3_gldc4"]
+
+[sub_resource type="Curve" id="Curve_4xfga"]
+_limits = [0.0, 1.3915663, 0.0, 1.0]
+_data = [Vector2(0, 0.14250982), 0.0, 0.0, 0, 0, Vector2(0.4966216, 0.6622515), 0.0, 0.0, 0, 0, Vector2(1, 1.3915663), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_paxxb"]
+curve = SubResource("Curve_4xfga")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wijl4"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(180, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(180, 0, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.07
+scale_over_velocity_min = 10.0
+scale_over_velocity_max = 30.0
+scale_over_velocity_curve = SubResource("CurveTexture_paxxb")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paxxb"]
+size = Vector2(360, 50)
+
+[node name="map" type="Node2D" unique_id=1424486181]
+script = ExtResource("1_gldc4")
+enemy_to_spawn = ExtResource("3_gldc4")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=601174089]
+position = Vector2(180, 320)
+scale = Vector2(0.65904933, 0.6388059)
+texture = ExtResource("1_paxxb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1775725402]
+amount = 100
+texture = ExtResource("1_4xfga")
+lifetime = 36.0
+preprocess = 36.0
+visibility_rect = Rect2(0, 0, 360, 640)
+process_material = SubResource("ParticleProcessMaterial_wijl4")
+
+[node name="spawnArea" type="Area2D" parent="." unique_id=800161220]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnArea" unique_id=272249221]
+position = Vector2(180, -50)
+shape = SubResource("RectangleShape2D_paxxb")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1862310365]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
