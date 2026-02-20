@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c3r2lci7ix36v"]
+
+[ext_resource type="Script" uid="uid://hji3jv5ort4h" path="res://scenes/weapon.gd" id="1_8affh"]
+
+[node name="weapon" type="Node2D" unique_id=210294654]
+script = ExtResource("1_8affh")
+
+[node name="reloadTimer" type="Timer" parent="." unique_id=673385693]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]

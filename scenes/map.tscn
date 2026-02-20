@@ -32,6 +32,21 @@ scale_over_velocity_curve = SubResource("CurveTexture_paxxb")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paxxb"]
 size = Vector2(360, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cso3"]
+size = Vector2(90.5, 857)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2klcf"]
+size = Vector2(90.5, 848)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lpho"]
+size = Vector2(833.625, 85.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nakos"]
+size = Vector2(376, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh32y"]
+size = Vector2(28, 667)
+
 [node name="map" type="Node2D" unique_id=1424486181]
 script = ExtResource("1_gldc4")
 enemy_to_spawn = ExtResource("3_gldc4")
@@ -58,4 +73,41 @@ shape = SubResource("RectangleShape2D_paxxb")
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1862310365]
 autostart = true
 
+[node name="removeArea" type="Area2D" parent="." unique_id=499384447]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="removeArea" unique_id=1186941911]
+position = Vector2(-189.75, 340.5)
+shape = SubResource("RectangleShape2D_0cso3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="removeArea" unique_id=1972147648]
+position = Vector2(548, 343)
+shape = SubResource("RectangleShape2D_2klcf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="removeArea" unique_id=969867733]
+position = Vector2(180.1875, 809.875)
+shape = SubResource("RectangleShape2D_2lpho")
+
+[node name="fence" type="StaticBody2D" parent="." unique_id=1502904396]
+collision_layer = 8
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fence" unique_id=342379245]
+position = Vector2(180, -11)
+shape = SubResource("RectangleShape2D_nakos")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="fence" unique_id=1609593935]
+position = Vector2(180, 651)
+shape = SubResource("RectangleShape2D_nakos")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="fence" unique_id=524110684]
+position = Vector2(-13, 327)
+shape = SubResource("RectangleShape2D_jh32y")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="fence" unique_id=1301886452]
+position = Vector2(373, 327)
+shape = SubResource("RectangleShape2D_jh32y")
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="removeArea" to="." method="_on_remove_area_body_entered"]

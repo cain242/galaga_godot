@@ -18,3 +18,6 @@ func _on_spawn_timer_timeout() -> void:
 	var e = enemy_to_spawn.instantiate()
 	call_deferred("add_child", e)
 	e.position = Vector2(x,y)
+
+func _on_remove_area_body_entered(body: Node2D) -> void:
+	body.queue_free()
