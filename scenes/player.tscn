@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://tpn10j3fvf17" path="res://assets/Arcade - Galaga - Miscellaneous - General Sprites.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ba12jhows1fj2" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://c3r2lci7ix36v" path="res://scenes/weapon.tscn" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 9.5
@@ -21,3 +22,6 @@ region_rect = Rect2(109, 1, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131107178]
 position = Vector2(-0.6666667, 9.333333)
 shape = SubResource("CircleShape2D_g2els")
+
+[node name="weapon" parent="." unique_id=210294654 instance=ExtResource("3_qhqgy")]
+unique_name_in_owner = true

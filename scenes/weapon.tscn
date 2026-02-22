@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://c3r2lci7ix36v"]
 
-[ext_resource type="Script" uid="uid://hji3jv5ort4h" path="res://scenes/weapon.gd" id="1_8affh"]
+[ext_resource type="Script" uid="uid://hji3jv5ort4h" path="res://scenes/weapon.gd" id="1_uxn4k"]
+[ext_resource type="PackedScene" uid="uid://cq3ba0clgopjj" path="res://scenes/bullet.tscn" id="2_bmw2d"]
 
 [node name="weapon" type="Node2D" unique_id=210294654]
-script = ExtResource("1_8affh")
+script = ExtResource("1_uxn4k")
+bullet = ExtResource("2_bmw2d")
 
 [node name="reloadTimer" type="Timer" parent="." unique_id=673385693]
 unique_name_in_owner = true

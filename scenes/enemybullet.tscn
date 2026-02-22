@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cwot70idwm6fc"]
+
+[ext_resource type="Script" uid="uid://cbo20ay4bnbhy" path="res://scenes/enemybullet.gd" id="1_gb0c3"]
+[ext_resource type="Texture2D" uid="uid://tpn10j3fvf17" path="res://assets/Arcade - Galaga - Miscellaneous - General Sprites.png" id="2_6u5qk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkf8s"]
+radius = 1.0
+
+[node name="enemyBullet" type="CharacterBody2D" unique_id=366539773]
+collision_layer = 2
+script = ExtResource("1_gb0c3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710369748]
+position = Vector2(0, 3)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6u5qk")
+region_enabled = true
+region_rect = Rect2(314, 158, 1, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281506566]
+shape = SubResource("CircleShape2D_mkf8s")
+
+[node name="lifeTimer" type="Timer" parent="." unique_id=870213985]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="lifeTimer" to="." method="_on_life_timer_timeout"]
